@@ -11,11 +11,11 @@ import java.util.List;
 import org.junit.Before;
 import org.junit.Test;
 
+import main.java.com.footballscoreboard.exeptions.MatchException;
+import main.java.com.footballscoreboard.exeptions.ScoreboardException.TeamAlreadyPlayingException;
 import main.java.com.footbalscoreboard.manager.ScoreboardManager;
 import main.java.com.footbalscoreboard.model.FootballMatch;
 import main.java.com.footbalscoreboard.model.Team;
-import main.java.footballscoreboard.exeptions.MatchException;
-import main.java.footballscoreboard.exeptions.ScoreboardException.TeamAlreadyPlayingException;
 
 public class ScoreboardManagerTest {
 	

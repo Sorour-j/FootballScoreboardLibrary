@@ -1,6 +1,6 @@
 package main.java.com.footbalscoreboard.model;
 
-import main.java.footballscoreboard.exeptions.MatchException;
+import main.java.com.footballscoreboard.exeptions.MatchException;
 
 public class FootballMatch {
 	

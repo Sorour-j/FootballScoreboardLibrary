@@ -1,4 +1,4 @@
-package main.java.footballscoreboard.exeptions;
+package main.java.com.footballscoreboard.exeptions;
 
 public class MatchException extends FootballScoreboardException {
 	    public MatchException(String message) {

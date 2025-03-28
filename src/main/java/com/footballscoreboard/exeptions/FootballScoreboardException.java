@@ -1,4 +1,4 @@
-package main.java.footballscoreboard.exeptions;
+package main.java.com.footballscoreboard.exeptions;
 	/**
 	 * Base exception for Football Scoreboard application.
 	 */
