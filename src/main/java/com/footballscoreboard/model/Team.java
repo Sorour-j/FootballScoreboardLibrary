@@ -6,7 +6,7 @@ public class Team {
 	
 	// team can be created using name
 	public Team(String name) {
-		if (name == null || name.isEmpty() || !Character.isUpperCase(name.charAt(0))) {
+		if (name == null || name.isEmpty()) {
             throw new IllegalArgumentException("Team name must not be empty and must start with an uppercase letter");
         }
 		// Check if the team name contains only alphabetic characters
@@ -14,7 +14,10 @@ public class Team {
             throw new IllegalArgumentException("Team name must only contain alphabetic characters.");
         }
         
-		this.name = name;
+        if (!Character.isUpperCase(name.charAt(0)))
+        	name = Character.toUpperCase(name.charAt(0)) + name.substring(1).toLowerCase();
+        	
+        this.name = name;
 	}
 	
 	// return the name of the team
