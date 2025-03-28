@@ -33,8 +33,28 @@ public class FootballMatch {
 		return totalScore;
 	}
 	
+	public boolean isActive () {
+		return isActive;
+	}
+	
 	public void isFinished () {
 		this.isActive = false;
+	}
+	
+	public Team getHomeTeam() {
+		return homeTeam;
+	}
+	
+	public Team getAwayTeam() {
+		return awayTeam;
+	}
+	
+	public int getHomeTeamScore() {
+		return homeScore;
+	}
+	
+	public int getAwayTeamScore() {
+		return awayScore;
 	}
 	
 	private void validateMatchActive() throws MatchException {
