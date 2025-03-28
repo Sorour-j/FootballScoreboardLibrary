@@ -1,4 +1,5 @@
-⚽ # Football World Cup Scoreboard
+ 
+# ⚽ Football World Cup Scoreboard
  
 This is a simple library for managing a Football World Cup scoreboard. It provides the following core functionalities:
 
