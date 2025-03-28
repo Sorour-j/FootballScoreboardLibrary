@@ -20,9 +20,10 @@ public class ScoreboardManager {
 	}
 	
 	// Start a new match by name of playing teams
-	public FootballMatch startMatch (Team homeTeam, Team awayTeam) throws TeamAlreadyPlayingException {
+	public FootballMatch startMatch (Team homeTeam, Team awayTeam) throws TeamAlreadyPlayingException, MatchException {
 		if (isTeamPlaying(homeTeam) || isTeamPlaying(awayTeam))
 			 throw new ScoreboardException.TeamAlreadyPlayingException();
+		
 		FootballMatch match = new FootballMatch (homeTeam, awayTeam);
 		matches.add(match);
 		return match;

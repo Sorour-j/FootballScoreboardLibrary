@@ -22,4 +22,10 @@ public class MatchException extends FootballScoreboardException {
             super("Decreasing the score is not allowed");
         }
     }
+    
+    public static class SameTeamMatchException extends MatchException {
+        public SameTeamMatchException() {
+            super("A team cannot play against itself!");
+        }
+    }
 }
