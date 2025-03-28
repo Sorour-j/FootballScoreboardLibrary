@@ -16,4 +16,10 @@ public class MatchException extends FootballScoreboardException {
             super("Score cannot be negative.");
         }
     }
+    
+    public static class LowerScoreException extends MatchException {
+        public LowerScoreException() {
+            super("Decreasing the score is not allowed");
+        }
+    }
 }
