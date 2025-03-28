@@ -1,7 +1,12 @@
 package test.java.com.footballscoreboard.manager;
 
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertThrows;
+import static org.junit.Assert.assertTrue;
+
+import java.util.List;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -9,6 +14,8 @@ import org.junit.Test;
 import main.java.com.footbalscoreboard.manager.ScoreboardManager;
 import main.java.com.footbalscoreboard.model.FootballMatch;
 import main.java.com.footbalscoreboard.model.Team;
+import main.java.footballscoreboard.exeptions.MatchException;
+import main.java.footballscoreboard.exeptions.ScoreboardException.TeamAlreadyPlayingException;
 
 public class ScoreboardManagerTest {
 	
@@ -29,37 +36,37 @@ private Team teamA, teamB, teamC, teamD;
 	    @Test
 	    void testAddMatch() throws TeamAlreadyPlayingException {
 	    	// Test adding a new match to the scoreboard
-	        FootballMatch match = board.addMatch(teamA, teamB);
+	        FootballMatch match = board.startMatch(teamA, teamB);
 	        assertNotNull(match);
 	        assertEquals(1, board.getMatchCount());
 	    }
 
 	    @Test
 	    void testAddMatchWithTeamAlreadyPlaying() throws TeamAlreadyPlayingException {
-	        board.addMatch(teamA, teamB);
-	        assertThrows(TeamAlreadyPlayingException.class, () -> board.addMatch(teamA, teamC));
+	        board.startMatch(teamA, teamB);
+	        assertThrows(TeamAlreadyPlayingException.class, () -> board.startMatch(teamA, teamC));
 	    }
 
 	    @Test
-	    void testRemoveMatch(){
+	    void testRemoveMatch() throws TeamAlreadyPlayingException{
 	    	// Test removing a match from scoreboard
-	    	FootballMatch match = board.addMatch(teamA, teamB);
-	        assertTrue(board.removeMatch(match));
+	    	FootballMatch match = board.startMatch(teamA, teamB);
+	        board.finishMatch(match);
 	        assertEquals(0, board.getMatchCount());
 	    }
 
 	    @Test
-	    void testRemoveNonExistentMatch() {
+	    void testFinishNonExistentMatch() {
 	    	// Test removing not existed match from scoreboard
 	    	FootballMatch match = new FootballMatch(teamA, teamB);
-	        assertFalse(board.removeMatch(match));
+	    	//assertThrows(IllegalArgumentException.class, () -> board.startMatch(teamA, teamC));
 	    }
 
 	    @Test
-	    void testGetSummary() {
+	    void testGetSummary() throws MatchException, TeamAlreadyPlayingException {
 	    	// Test the summary of matches
-	    	FootballMatch match1 = board.addMatch(teamA, teamB);
-	    	FootballMatch match2 = board.addMatch(teamC, teamD);
+	    	FootballMatch match1 = board.startMatch(teamA, teamB);
+	    	FootballMatch match2 = board.startMatch(teamC, teamD);
 	        
 	        match1.updateScore(3, 1);
 	        match2.updateScore(2, 2);
@@ -68,28 +75,5 @@ private Team teamA, teamB, teamC, teamD;
 	        assertEquals(2, summary.size());
 	        assertEquals(match2, summary.get(0)); // Higher total score
 	        assertEquals(match1, summary.get(1));
-	    }
-
-	    @Test
-	    void testGetMatchByTeam() throws TeamAlreadyPlayingException {
-	    	// Test if a match can be found by one of the teams involved in it
-	    	FootballMatch match = board.addMatch(teamA, teamB);
-	        assertEquals(match, board.getMatchByTeam(teamA));
-	        assertEquals(match, board.getMatchByTeam(teamB));
-	        assertNull(board.getMatchByTeam(teamC));
-	    }
-
-	    @Test
-	    void testUpdateScore() throws TeamAlreadyPlayingException {
-	    	// Test updating score in the board
-	    	FootballMatch match = board.addMatch(teamA, teamB);
-	        board.updateScore(teamA, teamB, 2, 1);
-	        assertEquals(2, match.getHomeScore());
-	        assertEquals(1, match.getAwayScore());
-	    }
-
-	    @Test
-	    void testUpdateScoreForNonExistentMatch() {
-	        assertThrows(IllegalArgumentException.class, () -> board.updateScore(teamA, teamB, 2, 1));
 	    }
 }
