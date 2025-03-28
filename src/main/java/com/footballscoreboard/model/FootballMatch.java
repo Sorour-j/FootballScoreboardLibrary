@@ -10,8 +10,9 @@ public class FootballMatch {
 	private int awayScore;
 	private boolean isActive;
 	
-	public FootballMatch(Team homeTeam, Team awayTeam) {
+	public FootballMatch(Team homeTeam, Team awayTeam) throws MatchException {
 		
+		validateMatch(homeTeam,awayTeam);
 		this.homeTeam = homeTeam;
 		this.awayTeam = awayTeam;
 		this.homeScore = 0;
@@ -26,6 +27,7 @@ public class FootballMatch {
 		
 		if (homeScore < this.homeScore || awayScore < this.awayScore )
         	throw new MatchException.LowerScoreException();
+		
 		this.homeScore = homeScore;
 		this.awayScore = awayScore;
 	}
@@ -68,6 +70,12 @@ public class FootballMatch {
 	 private void validateGoals(int goals) throws MatchException {
 	        if (goals < 0) {
 	            throw new MatchException.NegativeScoreException();
+	        }
+	    }
+	 private void validateMatch(Team homeTeam, Team awayTeam) throws MatchException {
+	        
+		 if (homeTeam.getName().equalsIgnoreCase(awayTeam.getName())) {
+	            throw new MatchException.SameTeamMatchException();
 	        }
 	    }
 	
