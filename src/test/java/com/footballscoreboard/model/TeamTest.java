@@ -29,7 +29,15 @@ public class TeamTest {
 	    public void testTeamNameMustStartWithUppercase() {
 	    // Ensure team name must start with upper-case
 	        Assertions.assertThrows(IllegalArgumentException.class, () -> {
-	            new Team("liverpool");
+	            new Team("mexico");
+	        });
+	    }
+	    
+	    @Test
+	    public void testTeamNameMustContainsOnlyAlphabeticCharacters() {
+	    // Ensure team name must start with upper-case
+	        Assertions.assertThrows(IllegalArgumentException.class, () -> {
+	            new Team("Sp@in");
 	        });
 	    }
 }
