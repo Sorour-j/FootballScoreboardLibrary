@@ -1,4 +1,4 @@
-package main.java.com.footbalscoreboard.model;
+package main.java.com.footballscoreboard.model;
 
 import main.java.com.footballscoreboard.exeptions.MatchException;
 

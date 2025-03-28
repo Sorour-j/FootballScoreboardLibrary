@@ -6,8 +6,8 @@ import static org.junit.Assert.assertThrows;
 import org.junit.Test;
 
 import main.java.com.footballscoreboard.exeptions.MatchException;
-import main.java.com.footbalscoreboard.model.FootballMatch;
-import main.java.com.footbalscoreboard.model.Team;
+import main.java.com.footballscoreboard.model.FootballMatch;
+import main.java.com.footballscoreboard.model.Team;
 
 public class FootbalMatchTest {
 

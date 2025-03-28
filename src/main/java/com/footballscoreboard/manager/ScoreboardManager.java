@@ -1,4 +1,4 @@
-package main.java.com.footbalscoreboard.manager;
+package main.java.com.footballscoreboard.manager;
 
 import java.util.ArrayList;
 import java.util.Comparator;
@@ -7,8 +7,8 @@ import java.util.List;
 import main.java.com.footballscoreboard.exeptions.MatchException;
 import main.java.com.footballscoreboard.exeptions.ScoreboardException;
 import main.java.com.footballscoreboard.exeptions.ScoreboardException.TeamAlreadyPlayingException;
-import main.java.com.footbalscoreboard.model.FootballMatch;
-import main.java.com.footbalscoreboard.model.Team;
+import main.java.com.footballscoreboard.model.FootballMatch;
+import main.java.com.footballscoreboard.model.Team;
 
 public class ScoreboardManager {
 	

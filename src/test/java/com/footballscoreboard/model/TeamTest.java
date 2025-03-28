@@ -5,7 +5,7 @@ import static org.junit.Assert.assertEquals;
 import org.junit.Test;
 import org.junit.jupiter.api.Assertions;
 
-import main.java.com.footbalscoreboard.model.Team;
+import main.java.com.footballscoreboard.model.Team;
 
 public class TeamTest {
 
