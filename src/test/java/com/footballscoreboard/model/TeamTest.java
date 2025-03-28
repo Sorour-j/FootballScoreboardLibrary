@@ -27,10 +27,9 @@ public class TeamTest {
 	    
 	    @Test
 	    public void testTeamNameMustStartWithUppercase() {
-	    // Ensure team name must start with upper-case
-	        Assertions.assertThrows(IllegalArgumentException.class, () -> {
-	            new Team("mexico");
-	        });
+	    // Ensure team name must start with upper-case and rest must be lower-case
+	       Team team = new Team ("meXico");
+	       assertEquals("Mexico", team.getName());
 	    }
 	    
 	    @Test
