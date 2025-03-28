@@ -22,4 +22,6 @@ This is a simple library for managing a Football World Cup scoreboard. It provid
 
 - A team can only play one match at a time—they can’t be in two matches simultaneously.
 
+- A team can not be played against itself.
+
 - The summary of the ongoing matches will show the total score in order, with the most recent match appearing first if two matches have the same score.
