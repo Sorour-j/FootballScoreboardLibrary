@@ -6,6 +6,9 @@ public class Team {
 	
 	// team can be created using name
 	public Team(String name) {
+		if (name == null || name.isEmpty() || !Character.isUpperCase(name.charAt(0))) {
+            throw new IllegalArgumentException("Team name must not be empty and must start with an uppercase letter");
+        }
 		this.name = name;
 	}
 	
