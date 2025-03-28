@@ -1,5 +1,7 @@
 package test.java.com.footballscoreboard.model;
 
+import static org.junit.Assert.assertEquals;
+
 import org.junit.Test;
 import org.junit.jupiter.api.Assertions;
 
@@ -16,12 +18,11 @@ public class TeamTest {
 	    }
 
 	    @Test
-	    public void testSetAndGetName() {
-	    //Test the set and get methods
+	    public void testGetName() {
+	    //Test the get method
 	        Team team = new Team("Canada");
 	        assertEquals("Canada", team.getName());
-	        team.setName("Canada");
-	        assertEquals("Canada", team.getName());
+
 	    }
 	    
 	    @Test
