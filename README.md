@@ -10,9 +10,11 @@ This is a simple library for managing a Football World Cup scoreboard. It provid
 
 # 🤔 Assumptions
 
-- Each team name must be provided, and it should not be empty. Also, team names should start with an uppercase letter (e.g., "Norway" not "norway").
+- Each team name must be provided, and it should not be empty. Also, team names must contains only the alpahbetic characters.
 
 - The score for both teams must always be a positive number. Negative scores are not accepted.
+
+- The score can not be set to a lower number.
 
 - Once a match is finished, no further changes can be made to the score.
 
