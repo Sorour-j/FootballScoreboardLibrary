@@ -8,6 +8,16 @@ This is a simple library for managing a Football World Cup scoreboard. It provid
   - Finish a match, after which the score can no longer be updated.
   - Display a summary of all in-progress matches.
 
-# Assumptions
+# 🤔 Assumptions
 
-- 
+- Each team name must be provided, and it should not be empty. Also, team names should start with an uppercase letter (e.g., "Norway" not "norway").
+
+- The score for both teams must always be a positive number. Negative scores are not accepted.
+
+- Once a match is finished, no further changes can be made to the score.
+
+- This library relies on user input, so it doesn’t handle real-time data or automatically update scores. You’ll need to input the scores manually.
+
+- A team can only play one match at a time—they can’t be in two matches simultaneously.
+
+- The summary of the ongoing matches will show the total score in order, with the most recent match appearing first if two matches have the same score.
