@@ -39,15 +39,6 @@ public class ScoreboardManager {
 	}
 
 	
-	// Update the score of a match
-	public void updateScore(FootballMatch match, int homeTeamScore, int awayTeamScore) throws MatchException {
-		if (matches.contains(match)) {
-			match.updateScore(homeTeamScore, awayTeamScore);	
-		}
-		else
-			throw new IllegalArgumentException("Match not found on the scoreboard");
-	}
-	
 	// Display the scoreboard, sort the matched by total score
 	public List<FootballMatch> getSummary(){
 		List<FootballMatch> summary = new ArrayList<>(matches);
@@ -67,7 +58,4 @@ public class ScoreboardManager {
 		return matches.stream().anyMatch(m -> m.getHomeTeam().getName().equals(team.getName()) || m.getAwayTeam().getName().equals(team.getName()));
 	}
 
-	public void updateScore(Team homeTeam, int homeTeamScore, int awayTeamScore) {
-		
-	}
 }
