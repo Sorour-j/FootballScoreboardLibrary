@@ -15,11 +15,11 @@ public class FootbalMatchTest {
     public void testFootballMatchCreation() {
 		//Test that a match is created correctly with the given names
 		FootballMatch match = new FootballMatch(new Team("Mexico"), new Team("Canada"));
-        assertEquals("Mexico", match.getHomeTeam());
-        assertEquals("Canada", match.getAwayTeam());
+        assertEquals("Mexico", match.getHomeTeam().getName());
+        assertEquals("Canada", match.getAwayTeam().getName());
         // Test that initial scores is set to 0
-        assertEquals("0", match.getHomeTeamScore());
-        assertEquals("0", match.getAwayTeamScore());
+        assertEquals(0, match.getHomeTeamScore());
+        assertEquals(0, match.getAwayTeamScore());
         // Test that Match is set as active when it is created
         assertEquals(true, match.isActive());
     }
@@ -42,10 +42,10 @@ public class FootbalMatchTest {
     }
     
     @Test
-    public void testInvalidScoreUpdate() {
+    public void testInvalidScoreUpdate() throws MatchException{
         // Test the validity of score
     	FootballMatch match = new FootballMatch(new Team("Mexico"), new Team("Canada"));
-        assertThrows(IllegalArgumentException.class, () -> {
+        assertThrows(MatchException.NegativeScoreException.class, () -> {
             match.updateScore(-1, 0);
         });
     }

@@ -18,14 +18,12 @@ import main.java.com.footbalscoreboard.model.FootballMatch;
 import main.java.com.footbalscoreboard.model.Team;
 
 public class ScoreboardManagerTest {
-	
-private ScoreboardManager scoreboar;
-	
+
 private ScoreboardManager board;
 private Team teamA, teamB, teamC, teamD;
 
 	    @Before
-	    void setUp() {
+	    public void setUp() {
 	        board = new ScoreboardManager();
 	        teamA = new Team("Mexico");
 	        teamB = new Team("Canada");
@@ -34,7 +32,7 @@ private Team teamA, teamB, teamC, teamD;
 	    }
 
 	    @Test
-	    void testAddMatch() throws TeamAlreadyPlayingException {
+	    public void testAddMatch() throws TeamAlreadyPlayingException {
 	    	// Test adding a new match to the scoreboard
 	        FootballMatch match = board.startMatch(teamA, teamB);
 	        assertNotNull(match);
@@ -42,13 +40,13 @@ private Team teamA, teamB, teamC, teamD;
 	    }
 
 	    @Test
-	    void testAddMatchWithTeamAlreadyPlaying() throws TeamAlreadyPlayingException {
+	    public void testAddMatchWithTeamAlreadyPlaying() throws TeamAlreadyPlayingException {
 	        board.startMatch(teamA, teamB);
 	        assertThrows(TeamAlreadyPlayingException.class, () -> board.startMatch(teamA, teamC));
 	    }
 
 	    @Test
-	    void testRemoveMatch() throws TeamAlreadyPlayingException{
+	    public void testRemoveMatch() throws TeamAlreadyPlayingException{
 	    	// Test removing a match from scoreboard
 	    	FootballMatch match = board.startMatch(teamA, teamB);
 	        board.finishMatch(match);
@@ -56,14 +54,14 @@ private Team teamA, teamB, teamC, teamD;
 	    }
 
 	    @Test
-	    void testFinishNonExistentMatch() {
+	    public void testFinishNonExistentMatch() {
 	    	// Test removing not existed match from scoreboard
 	    	FootballMatch match = new FootballMatch(teamA, teamB);
-	    	//assertThrows(IllegalArgumentException.class, () -> board.startMatch(teamA, teamC));
+	    	assertThrows(IllegalArgumentException.class, () -> board.finishMatch(match));
 	    }
 
 	    @Test
-	    void testGetSummary() throws MatchException, TeamAlreadyPlayingException {
+	    public void testGetSummary() throws MatchException, TeamAlreadyPlayingException {
 	    	// Test the summary of matches
 	    	FootballMatch match1 = board.startMatch(teamA, teamB);
 	    	FootballMatch match2 = board.startMatch(teamC, teamD);
