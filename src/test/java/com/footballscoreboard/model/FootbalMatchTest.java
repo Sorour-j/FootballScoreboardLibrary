@@ -7,6 +7,7 @@ import org.junit.Test;
 
 import main.java.com.footbalscoreboard.model.FootballMatch;
 import main.java.com.footbalscoreboard.model.Team;
+import main.java.footballscoreboard.exeptions.MatchException;
 
 public class FootbalMatchTest {
 
@@ -24,16 +25,16 @@ public class FootbalMatchTest {
     }
 	
 	@Test
-    public void testUpdateScore() {
+    public void testUpdateScore() throws MatchException {
 		// Test that the scores are updated correctly
 		FootballMatch match = new FootballMatch(new Team("Mexico"), new Team("Canada"));
 		match.updateScore(2 , 1);
-		assertEquals(2, match.getHomeScore());
-        assertEquals(1, match.getAwayScore());
+		assertEquals(2, match.getHomeTeamScore());
+        assertEquals(1, match.getAwayTeamScore());
 	}
 	
     @Test
-    public void testGetTotalScore() {
+    public void testGetTotalScore() throws MatchException {
     	// Test the sum of scores 
         FootballMatch match = new FootballMatch(new Team("Mexico"), new Team("Canada"));
         match.updateScore(2, 1);
