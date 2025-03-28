@@ -24,6 +24,8 @@ public class FootballMatch {
 		validateGoals(homeScore);
 		validateGoals(awayScore);
 		
+		if (homeScore < this.homeScore || awayScore < this.awayScore )
+        	throw new MatchException.LowerScoreException();
 		this.homeScore = homeScore;
 		this.awayScore = awayScore;
 	}
