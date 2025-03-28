@@ -42,11 +42,20 @@ public class FootbalMatchTest {
     }
     
     @Test
-    public void testInvalidScoreUpdate() throws MatchException{
+    public void testInvalidNegativeScoreUpdate() throws MatchException{
         // Test the validity of score
     	FootballMatch match = new FootballMatch(new Team("Mexico"), new Team("Canada"));
         assertThrows(MatchException.NegativeScoreException.class, () -> {
             match.updateScore(-1, 0);
+        });
+    }
+    @Test
+    public void testInvalidLowerScoreUpdate() throws MatchException{
+        // Test the validity of score
+    	FootballMatch match = new FootballMatch(new Team("Mexico"), new Team("Canada"));
+    	match.updateScore(2, 3);
+        assertThrows(MatchException.LowerScoreException.class, () -> {
+            match.updateScore(1, 3);
         });
     }
 }
