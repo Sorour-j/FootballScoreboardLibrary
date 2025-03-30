@@ -6,43 +6,20 @@ public class FootballMatch {
 	
 	private Team homeTeam;
 	private Team awayTeam;
-	private int homeScore;
-	private int awayScore;
-	private boolean isActive;
+	private int homeTeamScore;
+	private int awayTeamScore;
 	
 	public FootballMatch(Team homeTeam, Team awayTeam) throws MatchException {
 		
-		validateMatch(homeTeam,awayTeam);
 		this.homeTeam = homeTeam;
 		this.awayTeam = awayTeam;
-		this.homeScore = 0;
-		this.awayScore = 0;
-		this.isActive = true;
-	}
-	
-	public void updateScore(int homeScore, int awayScore) throws MatchException {
-		validateMatchActive();
-		validateGoals(homeScore);
-		validateGoals(awayScore);
-		
-		if (homeScore < this.homeScore || awayScore < this.awayScore )
-        	throw new MatchException.LowerScoreException();
-		
-		this.homeScore = homeScore;
-		this.awayScore = awayScore;
+		this.homeTeamScore = 0;
+		this.awayTeamScore = 0;
 	}
 	
 	public int getTotalScore() {
-		int totalScore = homeScore + awayScore;
+		int totalScore = homeTeamScore + awayTeamScore;
 		return totalScore;
-	}
-	
-	public boolean isActive () {
-		return isActive;
-	}
-	
-	public void isFinished () {
-		this.isActive = false;
 	}
 	
 	public Team getHomeTeam() {
@@ -54,29 +31,18 @@ public class FootballMatch {
 	}
 	
 	public int getHomeTeamScore() {
-		return homeScore;
+		return homeTeamScore;
 	}
 	
 	public int getAwayTeamScore() {
-		return awayScore;
+		return awayTeamScore;
 	}
 	
-	private void validateMatchActive() throws MatchException {
-        if (!isActive) {
-            throw new MatchException.MatchAlreadyEndedException();
-        }
-    }
+	public void setHomeTeamScore(int homeTeamScore) {
+		this.homeTeamScore = homeTeamScore;
+	}
 	
-	 private void validateGoals(int goals) throws MatchException {
-	        if (goals < 0) {
-	            throw new MatchException.NegativeScoreException();
-	        }
-	    }
-	 private void validateMatch(Team homeTeam, Team awayTeam) throws MatchException {
-	        
-		 if (homeTeam.getName().equalsIgnoreCase(awayTeam.getName())) {
-	            throw new MatchException.SameTeamMatchException();
-	        }
-	    }
-	
+	public void setAwayTeamScore(int awayTeamScore) {
+		 this.awayTeamScore = awayTeamScore;
+	}
 }
