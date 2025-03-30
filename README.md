@@ -29,7 +29,7 @@ This is a simple library for managing a Football World Cup scoreboard. It provid
 
 # How to Use the Library
 
-As this is a Maven project, you only need to add the following dependency to your project's pom.xml file to use the library:
+As this is a Maven project, after cloning the repository to your local workspace, you can simply add the following dependency to your project's pom.xml file to use the library:
 
 ```xml
 <dependency>
